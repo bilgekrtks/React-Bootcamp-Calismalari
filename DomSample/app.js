@@ -414,6 +414,42 @@ const suppliers =[
       "contactName": "a"
     }
   ]
- 
+ //const ulElement = document.createElement ('ul')
+ //ulElement.id = 'liste'
+ //const bodyElement =document.querySelector('body') //ilk öğeyi döndürür
+ //bodyElement.appendChild(ulElement)
+ //suppliers.forEach(supplier)=>{
+//    const companyName=supplier.companyName.toUpperCase()
+//    text manipülasyonları
+//    ulElement.innerText+=`<li>${companyName}</li>` //text olduğu gibi yazdırır
+//    ulElement.textContent +=`<li>${companyName}</li>`
 
- console.log(ulElement)
+//    html element manipülasyonları
+//    ulElement.innerHTML+=`<li>${companyName}</li>` 
+
+//    const liElement = document.createElement('li')
+//    liElement.innerText=companyName
+//    ulElement.appendChild(liElement)
+//  })
+
+const tableElement = document.querySelector('table')
+const header =`<tr>
+<th>Company</th>
+<th>Contact</th>
+<th>Country</th>
+</tr>`
+console.log(tableElement)
+tableElement.innerHTML=header
+suppliers.forEach(supplier => {
+  if(supplier.address.region.toLowerCase().trim()==='null'){
+    tableElement.innerHTML+=`<tr><td>${supplier.companyName}</td> 
+    <td>${supplier.contactName}</td>
+    <td style="color:red;">${supplier.address?.city}</td></tr>` //+= ile sırayla ekleyerek yazdırmış olur
+} else {
+    tableElement.innerHTML += `<tr><td>${supplier.companyName}</td>
+    <td>${supplier.contactName}</td>
+    <td>${supplier.address?.city}</td></tr>`
+}
+});
+
+ 
