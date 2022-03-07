@@ -29665,7 +29665,6 @@ const header = `
 <th>totalPrice</th></tr>`
 tableElement.innerHTML = header
 orders.forEach(order => {
-  const d = new Date(order.orderDate)
   if (order.details) {
     order.details.forEach(detail => {
               Price = detail.quantity * detail.unitPrice       
@@ -29675,7 +29674,7 @@ tableElement.innerHTML+=`<tr>
 <td>${order.customerId}</td>
 <td>${order.shipName}</td>
 <td>${order.shipAddress?.city}</td>
-<td>${moment(d).format('YYYY-MM')}</td>
+<td>${moment(new Date(order.orderDate)).format('YYYY-MM')}</td>
 <td>${Price}</td>
 </tr>`
 
