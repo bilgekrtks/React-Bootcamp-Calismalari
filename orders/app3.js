@@ -29624,4 +29624,17 @@ console.log(Math.round(Price));
 // console.log(new Date("1996-08-01 00:00:00.000"));
 // console.log(Date.now());
 
-//moment.js
+//ul eklenecek (htmle direkt yazılabilir ya da js ile de create edilebilir) ve li ler ile customerId ler listelenecek
+//bu listede shipVia 1 ise yazı rengi kırmızı 2 ise yazı bold 3 ise herhangi bir style olmadan yazdırılacak
+
+const ulElement = document.createElement('ul')
+ulElement.id = 'liste'
+const bodyElement = document.querySelector('body')
+bodyElement.appendChild(ulElement)
+
+orders.forEach((order)=>{
+  const customerId=order.customerId
+  const ulElement=document.createComment('ul')
+  ulElement.innerHTML+=`<li>${customerId}</li>`
+
+})
