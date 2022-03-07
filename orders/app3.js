@@ -29544,77 +29544,77 @@ total=+total.toPrecision(2)
 
 let totalPrice = 0;
 //tüm siparişlerin toplam tutarı
-orders.forEach((order) => {
-    if (order.details) {
-        order.details.forEach(detail => {
-            // totalPrice=  totalPrice +detail.quantity * detail.unitPrice
-            totalPrice += detail.quantity * detail.unitPrice
-        });
-    }
-})
+// orders.forEach((order) => {
+//     if (order.details) {
+//         order.details.forEach(detail => {
+//             // totalPrice=  totalPrice +detail.quantity * detail.unitPrice
+//             totalPrice += detail.quantity * detail.unitPrice
+//         });
+//     }
+// })
 
-//employeeId 8 olanların verdikleri siparişlerin toplam tutarı nedir?
-orders.forEach((order) => {
-    if (order.details) {
-        if (order.employeeId === 8) {
-            order.details.forEach(detail => {
-                // totalPrice=  totalPrice +detail.quantity * detail.unitPrice
-                totalPrice += detail.quantity * detail.unitPrice
-                totalPrice = +totalPrice.toFixed(2)
-            });
-        }
-    }
-})
+// //employeeId 8 olanların verdikleri siparişlerin toplam tutarı nedir?
+// orders.forEach((order) => {
+//     if (order.details) {
+//         if (order.employeeId === 8) {
+//             order.details.forEach(detail => {
+//                 // totalPrice=  totalPrice +detail.quantity * detail.unitPrice
+//                 totalPrice += detail.quantity * detail.unitPrice
+//                 totalPrice = +totalPrice.toFixed(2)
+//             });
+//         }
+//     }
+// })
 
-let bestCustomer;
-let worstCustomer;
-let maxPrice;
-let customerTotalPrice=[]
-orders.forEach((order)=> {
-    if(order.details){
-        let obj={
-            id: order.customerId,
-            totalPrice:0
-        }
-        let totalOrderPrice=0;
-        order.details.forEach(detail=> {
-            totalOrderPrice+=detail.quantity*detail.unitPrice
+// let bestCustomer;
+// let worstCustomer;
+// let maxPrice;
+// let customerTotalPrice=[]
+// orders.forEach((order)=> {
+//     if(order.details){
+//         let obj={
+//             id: order.customerId,
+//             totalPrice:0
+//         }
+//         let totalOrderPrice=0;
+//         order.details.forEach(detail=> {
+//             totalOrderPrice+=detail.quantity*detail.unitPrice
 
-        });
+//         });
        
-        obj.totalPrice=+totalOrderPrice
-        const result =customerTotalPrice.length>0? customerTotalPrice.some(q=>q.id ===order.customerId):null
-        if(result){
-            customerTotalPrice.find(q=>q.id===order.customerId).totalPrice+=+totalOrderPrice
-        }
-        else{
-            customerTotalPrice.push(obj)
-        }
+//         obj.totalPrice=+totalOrderPrice
+//         const result =customerTotalPrice.length>0? customerTotalPrice.some(q=>q.id ===order.customerId):null
+//         if(result){
+//             customerTotalPrice.find(q=>q.id===order.customerId).totalPrice+=+totalOrderPrice
+//         }
+//         else{
+//             customerTotalPrice.push(obj)
+//         }
      
-    }
-})
-bestCustomer= customerTotalPrice.sort((a,b)=> b.totalPrice-a.totalPrice)[0]
-worstCustomer =customerTotalPrice.sort((a,b)=>b.totalPrice-a.totalPrice)[customerTotalPrice.length-1]
-//console.log(customerTotalPrice)
-console.log(bestCustomer)
-console.log(worstCustomer)
+//     }
+// })
+// bestCustomer= customerTotalPrice.sort((a,b)=> b.totalPrice-a.totalPrice)[0]
+// worstCustomer =customerTotalPrice.sort((a,b)=>b.totalPrice-a.totalPrice)[customerTotalPrice.length-1]
+// //console.log(customerTotalPrice)
+// console.log(bestCustomer)
+// console.log(worstCustomer)
 
-//1998 MAYISTA verilen siparişler ve toplamı
-let Price=0
-const filteredOrders = orders.filter(q => new Date(q.orderDate).getFullYear() === 1998 && new Date(q.orderDate).getMonth() === 4);
-orders.forEach((order) => {
-    if (order.details) {
-      if(filteredOrders){
-      order.details.forEach(detail => {
+// //1998 MAYISTA verilen siparişler ve toplamı
+// let Price=0
+// const filteredOrders = orders.filter(q => new Date(q.orderDate).getFullYear() === 1998 && new Date(q.orderDate).getMonth() === 4);
+// orders.forEach((order) => {
+//     if (order.details) {
+//       if(filteredOrders){
+//       order.details.forEach(detail => {
               
-                Price += detail.quantity * detail.unitPrice
+//                 Price += detail.quantity * detail.unitPrice
               
-            });
-        }
-    }
+//             });
+//         }
+//     }
     
-})
-console.log(Math.round(Price));
+// })
+// console.log(Math.round(Price));
 // orders.forEach(order => {
 //     if (new Date(order.orderDate).getFullYear() === 1997) {
 //         console.log(new Date(order.orderDate).getMonth(), order)
@@ -29627,14 +29627,56 @@ console.log(Math.round(Price));
 //ul eklenecek (htmle direkt yazılabilir ya da js ile de create edilebilir) ve li ler ile customerId ler listelenecek
 //bu listede shipVia 1 ise yazı rengi kırmızı 2 ise yazı bold 3 ise herhangi bir style olmadan yazdırılacak
 
-const ulElement = document.createElement('ul')
-ulElement.id = 'liste'
-const bodyElement = document.querySelector('body')
-bodyElement.appendChild(ulElement)
+//html ile yazma (tek bir element üzerinden çalışır)
 
-orders.forEach((order)=>{
-  const customerId=order.customerId
-  const ulElement=document.createComment('ul')
-  ulElement.innerHTML+=`<li>${customerId}</li>`
+// const ulElement = document.createElement('ul')
+// ulElement.id = 'liste'
+// const bodyElement = document.querySelector('body')
+// bodyElement.appendChild(ulElement)
+// orders.forEach((order)=>{
+//   const customerId=order.customerId
+//   ulElement.innerHTML+=`<li>${customerId}</li>`
+
+//create element (her defasında 1 tane li create eder)
+
+// const ulElement = document.createElement('ul')
+// ulElement.id = 'liste'
+// const bodyElement = document.querySelector('body')
+// bodyElement.appendChild(ulElement)
+// orders.forEach((order)=>{
+//   const customerId=order.customerId
+//  const liElement= document.createElement("li")
+//  liElement.innerText=customerId
+//  ulElement.appendChild(liElement)
+// })
+//  if(liElement.shipVia === 1 )
+ 
+//   liElement.setAttribute('style', 'color: red') 
+
+//*CustomerId,shipName, city, orderDate (yıl-ay şeklinde yani 1997-12 gibi) ve order'a ait TotalPrice (derste hesapladığımız gibi detaydaki ürünlerin quantity*price şeklinde toplamları) şeklinde 5 kolonlu bir tablo oluşuturulacak.
+
+const tableElement = document.querySelector('table')
+const header = `
+<tr>
+<th>CustomerId</th>
+<th>shipName</th>
+<th>City</th>
+<th>orderDate</th>
+<th>totalPrice</th></tr>`
+tableElement.innerHTML = header
+orders.forEach(order => {
+  const d = new Date(order.orderDate)
+  if (order.details) {
+    order.details.forEach(detail => {
+              Price = detail.quantity * detail.unitPrice       
+      })
+  }
+tableElement.innerHTML+=`<tr>
+<td>${order.customerId}</td>
+<td>${order.shipName}</td>
+<td>${order.shipAddress?.city}</td>
+<td>${moment(d).format('YYYY-MM')}</td>
+<td>${Price}</td>
+</tr>`
 
 })
