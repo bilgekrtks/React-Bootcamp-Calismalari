@@ -29639,43 +29639,43 @@ let totalPrice = 0;
 
 //create element (her defasında 1 tane li create eder)
 
-// const ulElement = document.createElement('ul')
-// ulElement.id = 'liste'
-// const bodyElement = document.querySelector('body')
-// bodyElement.appendChild(ulElement)
-// orders.forEach((order)=>{
-//   const customerId=order.customerId
-//  const liElement= document.createElement("li")
-//  liElement.innerText=customerId
-//  ulElement.appendChild(liElement)
-// })
-//  if(liElement.shipVia === 1 )
+const ulElement = document.createElement('ul')
+ulElement.id = 'liste'
+const bodyElement = document.querySelector('body')
+bodyElement.appendChild(ulElement)
+orders.forEach((order)=>{
+  const customerId=order.customerId
+ const liElement= document.createElement("li")
+ liElement.innerText=customerId
+ ulElement.appendChild(liElement)
+})
+ if(liElement.shipVia === 1 )
  
-//   liElement.setAttribute('style', 'color: red') 
+liElement.style.color="red"
 
 //*CustomerId,shipName, city, orderDate (yıl-ay şeklinde yani 1997-12 gibi) ve order'a ait TotalPrice (derste hesapladığımız gibi detaydaki ürünlerin quantity*price şeklinde toplamları) şeklinde 5 kolonlu bir tablo oluşuturulacak.
 
-const tableElement = document.querySelector('table')
-const header = `
-<tr>
-<th>CustomerId</th>
-<th>shipName</th>
-<th>City</th>
-<th>orderDate</th>
-<th>totalPrice</th></tr>`
-tableElement.innerHTML = header
-orders.forEach(order => {
-  if (order.details) {
-    order.details.forEach(detail => {
-              Price = detail.quantity * detail.unitPrice       
-      })
-  }
-tableElement.innerHTML+=`<tr>
-<td>${order.customerId}</td>
-<td>${order.shipName}</td>
-<td>${order.shipAddress?.city}</td>
-<td>${moment(new Date(order.orderDate)).format('YYYY-MM')}</td>
-<td>${Price}</td>
-</tr>`
+// const tableElement = document.querySelector('table')
+// const header = `
+// <tr>
+// <th>CustomerId</th>
+// <th>shipName</th>
+// <th>City</th>
+// <th>orderDate</th>
+// <th>totalPrice</th></tr>`
+// tableElement.innerHTML = header
+// orders.forEach(order => {
+//   if (order.details) {
+//     order.details.forEach(detail => {
+//               Price = detail.quantity * detail.unitPrice       
+//       })
+//   }
+// tableElement.innerHTML+=`<tr>
+// <td>${order.customerId}</td>
+// <td>${order.shipName}</td>
+// <td>${order.shipAddress?.city}</td>
+// <td>${moment(new Date(order.orderDate)).format('YYYY-MM')}</td>
+// <td>${Price}</td>
+// </tr>`
 
-})
+// })
